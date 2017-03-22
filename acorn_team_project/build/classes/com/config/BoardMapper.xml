@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardMapper">
+ 	
+ 	
+ 	<select id = "totalCount" resultType="int">
+ 			select count(*)
+ 			from board
+ 	</select>
+ 	
+ 	<select id = "boardSearch" resultType="BoardDTO" parameterType="hashmap">
+ 	select id,category,title,writer_id,
+   		to_char(written_date,'YYYY/MM/DD')written_date,readcnt
+   		from board
+   		
+ 	<if test="searchName == 'title'">
+       where title LIKE  '%'||#{searchValue}||'%'
+     </if>
+     <if test="searchName == 'writer_id'">
+       where writer_id LIKE '%'||#{searchValue}||'%'
+     </if>
+    
+ 	</select>
+ 	
+ 	<update id="boardUpdate" parameterType="hashmap">
+      update board
+      set title=#{b}, writer_id =#{c} , content=#{d}
+      where id = #{a}
+   </update>
+ 	
+ 	
+ 	<delete id = "boardDelete" parameterType="int">
+ 		delete from board	
+ 		where id = #{id}
+ 	</delete>
+ 	
+ 	
+ 	
+ 	<update id="boardReadcnt" parameterType="int">
+ 		update board
+		set readcnt = readcnt +1
+ 			where id = #{id}
+ 	</update>
+ 	
+ 	
+ 	<select id = "boardInfo" resultType="BoardDTO" parameterType="int" >
+ 				select id,title,writer_id,content,filepath,category,
+ 				to_char(written_date, 'YYYY/MM/DD')written_date,readcnt
+ 				from board
+ 				where id = #{id}
+ 	
+ 	</select>	
+ 	
+ 	
+ 	<insert id = "boardWrite" parameterType="BoardDTO">
+ 	insert into board(id,title,writer_id,content,filepath,category,written_date)
+ 	values(board_seq.nextval, #{title}, #{writer_id}, #{content}, #{filepath},#{category},sysdate)
+ 	</insert>
+ 	
+	 	
+ 	
+   <select id = "boardList" resultType="BoardDTO">
+   		select id,category,title,writer_id,
+   		to_char(written_date,'YYYY/MM/DD')written_date,readcnt
+   		from board
+   		order by id desc
+   
+   </select>
+   
+   
+</mapper>
