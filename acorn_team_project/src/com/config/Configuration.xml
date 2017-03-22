@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="com/config/jdbc.properties" />
+    
+    <typeAliases>
+     <typeAlias type="com.entity.BoardDTO" alias="BoardDTO"/>
+     <typeAlias type="com.entity.AttendanceDTO" alias="AttendanceDTO"/>
+     <typeAlias type="com.entity.CommentDTO" alias="CommentDTO"/>
+     <typeAlias type="com.entity.CourseDTO" alias="CourseDTO"/>
+     <typeAlias type="com.entity.ManagerDTO" alias="ManagerDTO"/>
+     <typeAlias type="com.entity.MemberDTO" alias="MemberDTO"/>
+     <typeAlias type="com.entity.PageDTO" alias="PageDTO"/>
+     <typeAlias type="com.entity.RegisterDTO" alias="RegisterDTO"/>
+     <typeAlias type="com.entity.StudentDTO" alias="StudentDTO"/>
+     <typeAlias type="com.entity.TeacherDTO" alias="TeacherDTO"/>
+    <typeAlias type="com.entity.StudentattendancelistDTO" alias="StudentattendancelistDTO"/>	
+    </typeAliases>
+    
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.userid}" />
+				<property name="password" value="${jdbc.passwd}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/config/BoardMapper.xml" />
+		<mapper resource="com/config/MemberMapper.xml" />
+		<mapper resource="com/config/CourseMapper.xml" />
+		<mapper resource="com/config/AttendanceMapper.xml" />
+	</mappers>
+</configuration>
