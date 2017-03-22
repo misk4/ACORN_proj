@@ -30,7 +30,7 @@
 		분류<select name ="category" value="<%=category %>">
 		<option value="공지사항">공지사항</option>
 		<option value="잡담">잡담</option>
-		<option value="정보">정보</option>
+		<option value="정보">정보sss</option>
 		</select>
 		제목<input type="text" name ="title" value="<%=title %>"><br>
 		작성자<input type="text" name="writer_id" value="<%=writer_id %>"><br>
