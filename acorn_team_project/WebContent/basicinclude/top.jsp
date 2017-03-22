@@ -96,8 +96,8 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 				<h1>현재시간</h1>
 				<h1 id="clock"></h1>
 				<c:if test="${userid != null && userid.classification=='관리자'}">
-				<a href="Doattend?logout=로그아웃">로그아웃</a>
+				<a href="MemberLogout">로그아웃</a>
 				</c:if> 
 				<c:if test="${userid != null && userid.classification=='학생'}">
-				<a href="MemberLogout">퇴실하기</a>
+				<a href="Doattend?logout=로그아웃">퇴실하기</a>
 				</c:if>
