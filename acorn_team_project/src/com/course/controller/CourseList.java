@@ -33,6 +33,7 @@ public class CourseList extends HttpServlet {
 		session.setAttribute("userid", user);
 		//git test
 
+		//minsoo
 		List<CourseDTO> list = null;
 		try {
 			list = service.getCourseList();

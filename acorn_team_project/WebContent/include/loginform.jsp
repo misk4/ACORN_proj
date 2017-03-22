@@ -36,7 +36,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 </script>
 	<div class="container">
 		<h2>출석</h2>
-		<form class="col-xs-3" action="MemberLogin" method="POST">
+		<form class="col-xs-3" action="MemberLogin">
 			<div class="form-group">
 				<label>아이디:</label> <input type="text" class="form-control" id="id"
 					placeholder="아이디" name="userid">
