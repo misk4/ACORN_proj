@@ -74,6 +74,7 @@ public class MemberLogin extends HttpServlet {
 			request.setAttribute("error", 1);
 			target="watingloginmessage.jsp";
 		}
+		session.setAttribute("today", course_date);
 		session.setAttribute("userid", dto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher(target);
