@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acorn.MemberMapper">
+ 
+ <!-- 로그인 -->
+ <select id = "studentLogin" parameterType = "hashmap" resultType = "StudentDTO">
+ select id,name,birthdate,password,gender,phone_num,email,confirmation from student where id = #{userid} and password = #{passwd}
+ </select>
+ 
+ <select id = "teacherLogin" parameterType = "hashmap" resultType = "TeacherDTO">
+ select id,name,birthdate,password,gender,phone_num,email,confirmation from teacher where id = #{userid} and password = #{passwd}
+ </select>
+ 
+ <select id = "managerLogin" parameterType = "hashmap" resultType = "ManagerDTO">
+ select id,name,birthdate,password,gender,phone_num,email,confirmation from manager where id = #{userid} and password = #{passwd}
+ </select>
+ 
+ 
+ 
+ 
+ <!-- 가입 -->
+ <insert id = "joinstudent" parameterType = "hashmap">
+ insert into student(id,name,birthdate,password,gender,phone_num,email,confirmation) values (#{id},#{name},to_date(#{birthdate},'YY/MM/DD'),#{password},#{gender},#{phone_num},#{email},0)
+ </insert>
+ 
+  <insert id = "managerRegister" parameterType = "ManagerDTO">
+ insert into manager(id,name,birthdate,password,gender,phone_num,email) values (#{id},#{name},#{birthdate},#{password},#{gender},#{phone_num},#{email})
+ </insert>
+ 
+  <insert id = "teacherRegister" parameterType = "TeacherDTO">
+ insert into teacher(id,name,birthdate,password,gender,phone_num,email) values (#{id},#{name},#{birthdate},#{password},#{gender},#{phone_num},#{email})
+ </insert>
+ 
+ 
+ <!-- 회원 정보 -->
+  <select id = "studentInfo" parameterType = "hashmap" resultType = "StudentDTO">
+ select id,name,birthdate,password,gender,phone_num,email,confirmation from student where id = #{userid} and password = #{passwd}
+ </select>
+ 
+ <select id = "teacherInfo" parameterType = "hashmap" resultType = "TeacherDTO">
+ select id,name,birthdate,password,gender,phone_num,email,confirmation from teacher where id = #{userid} and password = #{passwd}
+ </select>
+ 
+ <select id = "managerInfo" parameterType = "hashmap" resultType = "ManagerDTO">
+ select id,name,birthdate,password,gender,phone_num,email,confirmation from manager where id = #{userid} and password = #{passwd}
+ </select>
+ <!-- 모든학생리스트 -->
+ <select id="getallstudentlist" resultType="MemberDTO">
+ select * from student
+ </select>
+ <!-- 모든선생님리스트 -->
+ <select id="getallteacherlist" resultType="MemberDTO">
+ select * from teacher
+ </select>
+ 
+ <select id="watingjoinlist" resultType="MemberDTO">
+ select * from student where confirmation = 0
+ </select>
+ <!-- 정보 수정 -->
+ <update id = "studentUpdate" parameterType = "hashmap">
+ update student 
+ set name = #{name}, password = #{password} , gender = #{gender} , phone_num = #{phone_num}, email = #{email}
+ where id = #{id}
+ </update>
+ 
+  <update id = "managerUpdate" parameterType = "ManagerDTO">
+ update student 
+ set name = #{name}, birthdate = #{birthdate}, password = #{password} , gender = #{gender} , phone_num = #{phone_num}, email = #{email}
+ where id = #{id}
+ </update>
+ 
+  <update id = "teacherUpdate" parameterType = "TeacherDTO">
+ update student 
+ set name = #{name}, birthdate = #{birthdate}, password = #{password} , gender = #{gender} , phone_num = #{phone_num}, email = #{email}
+ where id = #{id}
+ </update>
+ 
+ <update id="updateconfirmation" parameterType="String">
+ update student set CONFIRMATION = 1 where id = #{id}
+ </update>
+ 
+ <!-- 회원관리 -->
+ <select id = "allMembers" resultType = "MemberDTO">
+ select id,name,birthdate,gender,phone_num,email,confirmation,'Student' as classfication from student
+ union
+ select id,name,birthdate,gender,phone_num,email,confirmation,'Teacher' as classfication from teacher
+ union
+ select id,name,birthdate,gender,phone_num,email,confirmation,'Manager' as classfication from manager
+ </select>  
+ <select id="idcheck" parameterType="String" resultType="String"> 
+select id
+from (select id from student union select id from teacher union select id from manager)
+where id = #{id}
+ </select> 
+  
+  
+  <!-- 회원 승인 --> 
+ <update id ="confirmStudent" parameterType = "string">
+ update student set confirmation = 1 where id = #{id}
+ </update>
+ 
+  <update id ="confirmManager" parameterType = "string">
+ update manager set confirmation = 1 where id = #{id}
+ </update>
+ 
+  <update id ="confirmTeacher" parameterType = "string">
+ update teacher set confirmation = 1 where id = #{id}
+ </update>
+ 
+ 
+ 
+</mapper>
