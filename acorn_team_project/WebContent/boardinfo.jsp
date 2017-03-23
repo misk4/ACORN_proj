@@ -13,20 +13,6 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#filepath").ready(function(){
-		$("span").hide(2000);
-});
-	$("#filepath").ready(function(){
-		$("span").show(2000);
-	});
-});
-</script>
-</head>
-<body>
-	
-	
 	<%
 		BoardDTO dto = (BoardDTO)request.getAttribute("boardInfo");
 		int id = dto.getId();
@@ -39,6 +25,24 @@ $(document).ready(function(){
 		int readcnt = dto.getReadcnt();
 
 %>
+<script type="text/javascript">
+<%-- $(document).ready(function(){
+	if(<%=filepath%>==null.jpg){
+		
+	}
+
+	$("#filepath").(function(){
+		$("span").hide(2000);
+});
+	$("#filepath").ready(function(){
+		$("span").show(2000);
+	});
+}); --%>
+</script>
+</head>
+<body>
+	
+	
 	<form action="BoardUpdate" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="id" value="<%=id %>">
 		글번호:<%=id %>&nbsp;
