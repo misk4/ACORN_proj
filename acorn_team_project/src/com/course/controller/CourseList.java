@@ -31,8 +31,9 @@ public class CourseList extends HttpServlet {
 		user.setId("msk");
 		user.setClassification("학생");
 		session.setAttribute("userid", user);
+		//git test
 
-
+		//minsoo
 		List<CourseDTO> list = null;
 		try {
 			list = service.getCourseList();
