@@ -11,16 +11,52 @@
 
 <body>
 	<form action="BoardWrite" method="post" enctype="multipart/form-data">
-		<select name="category">
+	<table width="700" border="3" bordercolor="lightgray" align="center">
+        <tr>
+            <td>분  류</td>
+            <td colspan="3"><select name="category">
 			<option value="공지사항">공지사항</option>
 			<option value="잡담">잡담</option>
 			<option value="정보">정보</option>
 		</select>
-		제   목<input type="text" name ="title"><br>
-		작성자<input type="text" name="writer_id"><br>
-		내용<textarea rows="30" cols="30" name="content"></textarea><br>
- 		 파일첨부<input type="file" name="filepath"><br/>
-  			<input type="submit" value="글작성">
+		</td>
+            <td>제목</td>
+            <td colspan="5">
+            <input name="title" type="text" size="30" maxlength="50" value=""/>
+            </td>
+        </tr>
+            <tr>
+            <td>작성자</td>
+            <td colspan="3">
+                <input name="writer_id" type="text" >
+            </td>       
+             
+        </tr>
+        <tr>
+            <td >
+                내 용
+            </td>
+            <td colspan="5">
+                <textarea name="content" cols="72" rows="20"></textarea>            
+            </td>        
+        </tr>
+        <tr>
+            <td id="title" >
+                파일첨부
+            </td>
+            <td>
+                <input type="file" name="filepath" >
+            </td>    
+        </tr>
+ 
+        <tr align="center" valign="middle">
+            <td colspan="7">
+                <input type="reset" value="작성취소" >
+                <input type="submit" value="등록" >
+                <input type="button" value="목록" >            
+            </td>
+        </tr>
+    </table>    
 		</form>
 	<!-- </form> -->
 </body>
