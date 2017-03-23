@@ -18,6 +18,8 @@ public class CourseDTO {
 	private int current_student;
 	private String teacher_name;
 	
+	private boolean status;
+	
 	
 	
 	
@@ -146,8 +148,7 @@ public class CourseDTO {
 	public int getCurrent_student() {
 		return current_student;
 	}
-
-
+	
 
 
 	public void setCurrent_student(int current_student) {
@@ -168,15 +169,25 @@ public class CourseDTO {
 		this.teacher_name = teacher_name;
 	}
 
+	public boolean isStatus() {
+		return status;
+	}
 
-
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
 		return "CourseDTO [id=" + id + ", name=" + name + ", teacher_id=" + teacher_id + ", start_time=" + start_time
 				+ ", end_time=" + end_time + ", start_day=" + start_day + ", end_day=" + end_day + ", days=" + days
-				+ ", manager_id=" + manager_id + ", max_student=" + max_student + ", total_days=" + total_days + "]";
+				+ ", manager_id=" + manager_id + ", max_student=" + max_student + ", total_days=" + total_days
+				+ ", current_student=" + current_student + ", teacher_name=" + teacher_name + ", status=" + status
+				+ "]";
 	}
+
+
+	
 	
 	
 	

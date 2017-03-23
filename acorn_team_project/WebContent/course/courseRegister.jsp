@@ -20,23 +20,77 @@ $(document).ready(function(){
 		$("form").attr("action","CourseUpdate");
 		$("#submitButton").val("수정");
 	}
+	
+	$("th").attr("width",120);
+	$("input").attr("width",1000);
 });
 </script>
 <h1>강의 등록</h1>
-<form action="" method="post">
+<div class = "table-responsive">
+<form action="" method="post" class = "table-responsive">
 <input type = "hidden" name = "id" value = "${course.id }">
- 강의 명 <input type="text" name="name" value = "${course.name }"><br>
-선생님 아이디<input type="text" name="teacher_id" value = "${course.teacher_id }"><br>
-시작 시간<input type="text" name="start_time" value = "${course.start_time }"><br>
-종료 시간<input type="text" name="end_time" value = "${course.end_time }"><br>
-시작 날짜 <input type="text" name="start_day" value = "${course.start_day }"><br>
-종료 날짜<input type="text" name="end_day" value = "${course.end_day }"><br>
-강의 요일<input type="text" name="days" value = "${course.days }"><br>
-매니저 아이디<input type="text" name="manager_id" value = "${course.manager_id }"><br>
-최대 수강 인원<input type="text" name="max_student" value = "${course.max_student }"><br>
-수강 일수 <input type="text" name="total_days" value = "${course.total_days }"><br>
 
-  <input type="submit" id ="submitButton"> 
+<table class = "table">
+<tr>
+	<th>강의 명 </th>
+	<td><input type="text" name="name" value = "${course.name }"></td>
+</tr>
 
-    <input type="reset" value="초기화">     
+<tr>
+	<th>선생님 아이디</th>
+	<td><input type="text" name="name" value = "${course.teacher_id }"></td>
+</tr>
+
+<tr>
+	<th>시작 시간</th>
+	<td><input type="text" name="start_time" value = "${course.start_time }"></td>
+</tr>
+
+<tr>
+	<th>종료 시간</th>
+	<td><input type="text" name="end_time" value = "${course.end_time }"></td>
+</tr>
+
+<tr>
+	<th>시작 날짜</th>
+	<td><input type="text" name="start_day" value = "${course.start_day }"></td>
+</tr>
+
+<tr>
+	<th>종료 날짜</th>
+	<td><input type="text" name="end_day" value = "${course.end_day }"></td>
+</tr>
+
+<tr>
+	<th>강의 요일</th>
+	<td><input type="text" name="days" value = "${course.days }"></td>
+</tr>
+
+<tr>
+	<th>매니저 아이디</th>
+	<td><input type="text" name="manager_id" value = "${course.manager_id }"></td>
+</tr>
+
+
+
+<tr>
+	<th>최대 수강 인원</th>
+	<td><input type="text" name="max_student" value = "${course.max_student }"></td>
+</tr>
+
+<tr>
+	<th>수강 일수 </th>
+	<td><input type="text" name="total_days" value = "${course.total_days }"></td>
+</tr>
+
+
+
+</table>
+
+&nbsp;&nbsp;&nbsp;<input type="submit" id ="submitButton"> 
+&nbsp;&nbsp;<input type="reset" value="초기화">  
+
 </form>
+</div>
+
+   

@@ -84,4 +84,8 @@ having count(register.course_id) &gt;= avg(course.max_student)
  select * from course where id = #{id}
  </select>
  
+ <select id = "myCourse" parameterType = "string" resultType = "int">
+ select course_id from register where student_id = #{id}
+ </select>
+ 
 </mapper>

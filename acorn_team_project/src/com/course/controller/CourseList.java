@@ -28,8 +28,8 @@ public class CourseList extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO user = (MemberDTO)session.getAttribute("userid");
 		user = new MemberDTO();
-		user.setId("msk");
-		user.setClassification("학생");
+		user.setId("manager");
+		user.setClassification("관리자");
 		session.setAttribute("userid", user);
 		//git test
 
@@ -37,6 +37,9 @@ public class CourseList extends HttpServlet {
 		List<CourseDTO> list = null;
 		try {
 			list = service.getCourseList();
+			if(user.getClassification().equals("학생")){
+				list = service.myCourse(list,user.getId());
+			}
 			request.setAttribute("courseList", list);
 			request.setAttribute("classification", user.getClassification());
 			target = "courseList.jsp";

@@ -32,7 +32,6 @@ public class CourseRegisterUI extends HttpServlet {
 		if(dto != null && dto.getClassification().equals("Manager")){
 			
 			String id = request.getParameter("course_id");
-			System.out.println(id);
 			if(id != null){
 				CourseService service = new CourseService();
 				CourseDTO course =null;
