@@ -44,12 +44,7 @@ $("#button").on("click",function(){
 	
 })//on click
 
-$("#modifybutton").on("click",function(){
 
-	
-	
-	
-})
 
 
 
@@ -57,6 +52,74 @@ $("#modifybutton").on("click",function(){
 
 
 })//end document
+
+function modify(kk,as){
+	
+
+	
+	
+	var value = document.getElementsByClassName(kk);
+	
+	
+	for(var i = 0 ; i <value.length ; i++){
+		value[i].removeAttribute('readonly');
+		value[i].style.border = "3px solid blue"
+	}
+	
+ 		$(document).ready(function(){
+			
+ 			
+			$(as).replaceWith("<button id='" + kk + "'>수정하기!</button>");
+ 			$("#"+kk+"").attr('onclick', "realmodify('" + kk + "','" + this + "')");
+ 			
+			
+ 		});	
+		
+		
+		
+		
+	//end document jquery
+	
+}
+function realmodify(kk,as){
+	
+	
+	console.log(kk);
+	var value = document.getElementsByClassName(kk);
+	var ajaxvalue = "";	
+	for(var i = 0 ; i <value.length ; i++){
+		value[i].setAttribute('readonly','readonly');
+		value[i].style.border = "0px solid black"
+		ajaxvalue += value[i].name+":"+value[i].value+",";
+	}
+	ajaxvalue += "id"+":"+kk;
+	
+	$(document).ready(function(){
+		
+		
+		$.ajax({
+			type: "get",
+			url:"ajax/updatememberajax.jsp",
+			data: {
+				v1:ajaxvalue
+			},
+			dataType:"text",
+			success: function(responseData, status, xhr){
+				
+				
+				
+				
+			}
+		
+			
+		})//ajax
+		
+		
+		
+		
+		});
+}
+
 </script>
 
 <div class="table-responsive">
@@ -81,21 +144,27 @@ $("#modifybutton").on("click",function(){
 			<tbody>
 				<tr>
 					<td>${list.id }</td>
-					<td><input type="text" value=${list.name} readonly="readonly"></td>
-					<td><input type="text" value=${list.birthdate} readonly="readonly"></td>
-					<td><input type="text" value=${list.gender} readonly="readonly"></td>
-					<td><input type="text" value=${list.phone_num} readonly="readonly"></td>
-					<td><input type="text" value=${list.email} readonly="readonly"></td>
+					<td><input type="text" value=${list.name } class=${list.id } readonly="readonly" name="name"></td>
+					<td><input type="text" value=${list.birthdate } class=${list.id } name="birthdate"
+						readonly="readonly"></td>
+					<td><input type="text" value=${list.gender } class=${list.id } name="gender"
+						readonly="readonly"></td>
+					<td><input type="text" value=${list.phone_num } class=${list.id } name="phone_num"
+						readonly="readonly"></td>
+					<td><input type="text" value=${list.email } class=${list.id } name="email"
+						readonly="readonly"></td>
 					<c:if test="${mem == '가입'}">
-					<input type="hidden" name="v1" id="v1" value="${list.id }">
-					<td id="result"><button type="button" class="btn btn-danger" id="button">승인</button></td>
+						<input type="hidden" name="v1" id="v1" value="${list.id }">
+						<td id="result"><button type="button" class="btn btn-danger"
+								id="button">승인</button></td>
 					</c:if>
 					<c:if test="${mem == '학생' || mem == '선생님'}">
-					<td>
-					<button type="button" class="btn btn-danger" id="modifybutton">회원정보수정</button>
-					</td>
+						<td>
+							
+							<button type="button" class="btn btn-danger" onclick="modify('${list.id}',this)">회원정보수정</button>
+						</td>
 					</c:if>
-					
+
 				</tr>
 			</tbody>
 		</c:forEach>
