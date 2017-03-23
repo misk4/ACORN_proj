@@ -29,11 +29,17 @@ public class BoardUpdate extends HttpServlet {
 		String writer_id = multi.getParameter("writer_id");
 		String content = multi.getParameter("content");
 		String filepath = multi.getFilesystemName("filepath");
+		String filepath2 = multi.getParameter("filepath2");
 		if(filepath == null){
 			filepath = "null.jpg";
 		}
+		
+		if(filepath.equals("null.jpg") && !filepath2.equals("null.jpg")){
+			filepath = filepath2;
+		}
 		String category = multi.getParameter("category");
 		String m_fileFullPath = savePath + "/" + filepath;
+		System.out.println(id);
 		
 		HashMap<String, String> map=
 				new HashMap<>();
