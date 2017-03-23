@@ -41,6 +41,16 @@ public class MemberService {
 		} finally {
 			session.close();
 		}
+	}
+		public void updatememberfrommanager(HashMap<String, String> map){
+			SqlSession session = MySqlsessionFactory.openSession();
+			
+			try {
+				session.update("updatememberfrommanager", map);
+				session.commit();
+			} finally {
+				session.close();
+			}
 		
 		
 		

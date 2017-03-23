@@ -64,6 +64,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  set name = #{name}, password = #{password} , gender = #{gender} , phone_num = #{phone_num}, email = #{email}
  where id = #{id}
  </update>
+ <update id = "updatememberfrommanager" parameterType = "hashmap">
+ update student 
+ set name = #{name}, gender = #{gender} , phone_num = #{phone_num}, email = #{email}
+ where id = #{id}
+ 
+ </update>
  
   <update id = "managerUpdate" parameterType = "ManagerDTO">
  update student 
