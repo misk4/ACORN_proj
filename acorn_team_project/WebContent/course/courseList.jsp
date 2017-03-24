@@ -65,7 +65,7 @@
 				<td>${dto.end_day }</td>
 				<td>${dto.days }</td>
 				<td>${dto.manager_id }</td>
-				<td>${current}/ ${dto.max_student }</td>
+				<td>${current} / ${dto.max_student }</td>
 				<td>${dto.total_days }</td>
 				<c:if test="${classification == '관리자' }">
 					<td><a href="CourseRegisterUI?course_id=${dto.id }">수정</a></td>

@@ -20,8 +20,10 @@ public class CourseDTO {
 	
 	private boolean status;
 	
-	
-	
+	private String teacher_phone;
+	private String teacher_email;
+	private String manager_phone;
+	private String manager_email;
 	
 	public CourseDTO(int id, String name, String teacher_id,String start_time, String end_time, String start_day,
 			String end_day, String days, String manager_id, int max_student, int total_days) {
@@ -72,6 +74,29 @@ public class CourseDTO {
 		this.max_student = max_student;
 		this.total_days = total_days;
 	}
+
+	
+	public CourseDTO(int id, String name, String teacher_name, String start_time, String end_time, String start_day,
+			String end_day, String days, String manager_id, int max_student, int total_days, String teacher_phone,
+			String teacher_email, String manager_phone, String manager_email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.teacher_name = teacher_name;
+		this.start_time = start_time;
+		this.end_time = end_time;
+		this.start_day = start_day;
+		this.end_day = end_day;
+		this.days = days;
+		this.manager_id = manager_id;
+		this.max_student = max_student;
+		this.total_days = total_days;
+		this.teacher_phone = teacher_phone;
+		this.teacher_email = teacher_email;
+		this.manager_phone = manager_phone;
+		this.manager_email = manager_email;
+	}
+
 	public CourseDTO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -175,6 +200,40 @@ public class CourseDTO {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	
+	
+	public String getTeacher_phone() {
+		return teacher_phone;
+	}
+
+	public void setTeacher_phone(String teacher_phone) {
+		this.teacher_phone = teacher_phone;
+	}
+
+	public String getTeacher_email() {
+		return teacher_email;
+	}
+
+	public void setTeacher_email(String teacher_email) {
+		this.teacher_email = teacher_email;
+	}
+
+	public String getManager_phone() {
+		return manager_phone;
+	}
+
+	public void setManager_phone(String manager_phone) {
+		this.manager_phone = manager_phone;
+	}
+
+	public String getManager_email() {
+		return manager_email;
+	}
+
+	public void setManager_email(String manager_email) {
+		this.manager_email = manager_email;
 	}
 
 	@Override

@@ -16,33 +16,34 @@ import com.entity.MemberDTO;
 import com.exception.CommonException;
 import com.service.CourseService;
 
-
-@WebServlet("/CourseList")
-public class CourseList extends HttpServlet {
-
-
-
+/**
+ * Servlet implementation class MyCourseList
+ */
+@WebServlet("/MyCourseList")
+public class MyCourseList extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CourseService service = new CourseService();
 		String target = null;
 		HttpSession session = request.getSession();
 		MemberDTO user = (MemberDTO)session.getAttribute("userid");
 		user = new MemberDTO();
-		user.setId("manager");
-		user.setClassification("관리자");
+		user.setId("msk");
+		user.setClassification("학생");
 		session.setAttribute("userid", user);
 		//git test
 
 		//minsoo
 		List<CourseDTO> list = null;
 		try {
-			list = service.getCourseList();
-			if(user.getClassification().equals("학생")){
-				list = service.myCourse(list,user.getId());
+			list = service.myCourseList(user.getId());
+			for (CourseDTO courseDTO : list) {
+				System.out.println(courseDTO.getTeacher_email());
 			}
 			request.setAttribute("courseList", list);
-			request.setAttribute("classification", user.getClassification());
-			target = "courseList.jsp";
+			target = "myCourseList.jsp";
 		} catch (CommonException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,12 +57,11 @@ public class CourseList extends HttpServlet {
 
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
-
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -25,13 +25,14 @@ where course.teacher_id = teacher.id
  
  <!--학생 강의 목록 조회  -->
 <select id = "myCourseList" resultType = "CourseDTO" parameterType="string">
-select register.id, course.name,teacher.name as "teacher_name", start_time,end_time,start_day,end_day,days,manager_id,
-current_student,max_student,total_days
-from register,course,teacher,
-(select course_id,count(*) as current_student
+select course.id, course.name,teacher.name as "teacher_name", start_time,end_time,start_day,end_day,days,manager_id
+,max_student,total_days,teacher.phone_num "teacher_phone",teacher.email "teacher_email",manager.phone_num "manager_phone",manager.email "manager_email"
+from course left outer join 
+(select course_id
 from register
-group by course_id)cs
-where register.student_id = #{student_id} and register.course_id = course.id and course.teacher_id = teacher.id and cs.course_id = course.id 
+where register.student_id = #{id})cs
+on(cs.course_id = course.id),teacher,manager
+where course.teacher_id = teacher.id and course.manager_id = manager.id
 
 </select>
 
