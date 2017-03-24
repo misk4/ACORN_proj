@@ -9,9 +9,54 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" 
 uri="http://java.sun.com/jsp/jstl/functions" %>
+	
+
+
+
+<script>
+function deleteBy(id){
+	
+	console.log(id);
+
+	if(confirm("삭제하시겠습니까?") == true){
+		
+		$(document).ready(function() {
+			
+			$.ajax({
+				type: "get",
+				url:"ajax/deleteboardajax.jsp",
+				data: {
+					v1:id
+				},
+				dataType:"text",
+				success: function(responseData, status, xhr){
+					$("#"+id+"").remove();
+					
+					
+				}
+			
+				
+			})//ajax
+			
+			
+			
+		})//end ajax jquery
+		
+	}//end confimr if
+	
+	
+	
+}//end function delete
+</script>
+
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+
+
 <h1>게시판	</h1>
 	<table class="table table-bordered">
 		<tr>		
@@ -24,8 +69,12 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 		</tr>
 	<c:set var="pDTO" value="${pageDTO}"/>
 	<c:forEach var="xxx" items="${pDTO.list}">
-		<tr>
-			<td>${xxx.id}</td>
+		<tr id="${xxx.id }">
+			<td>${xxx.id}
+			<c:if test="${userid.confirmation==2}">
+			<button class="btn btn-danger" onclick="deleteBy('${xxx.id}')">위험글삭제</button>				
+			</c:if>
+			</td>
 			<td>${xxx.category}</td>
 			<td><a href="BoardInfo?id=${xxx.id}">${xxx.title}</a></td>
 			<td>${xxx.writer_id}</td>
@@ -76,4 +125,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
   </tr>
  <!-- page -->  
 	</table>
+	<c:if test="${userid != null }">
 	<a href="BoardWriteUi">글쓰기</a>
+	</c:if>
+	

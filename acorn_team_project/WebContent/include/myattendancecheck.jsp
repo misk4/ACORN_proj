@@ -14,7 +14,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
         <th>아이디</th>
         <th>이름</th>
         <th>출석일</th>
-        <th>출석시간</th>
+        <th>태그시간</th>
         
       </tr>
     </thead>
@@ -32,4 +32,4 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
   </table>
   </div>
   
-  <a href="MemberInfo" class="btn btn-link" role="button">목록으로</a>
+  <a href="MemberInfo" class="btn btn-link" role="button">내정보보기</a>
