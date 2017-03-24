@@ -75,7 +75,8 @@
             </td>       
             <td>작성자</td>
             <td>
-                <input name="writer_id" type="text"  value="<%=writer_id %>">
+            ${userid.id }
+                <input name="writer_id" type="hidden"  value="${userid.id }">
             </td>
             <td>작성일</td>
             <td><%=written_date %></td> 

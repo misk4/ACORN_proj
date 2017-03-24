@@ -26,8 +26,10 @@ public class BoardList extends HttpServlet {
 		if(curPage == null){
 			curPage = "1";
 		}
+		String cate = request.getParameter("cate");
+		System.out.println("넘어오는 카테고리"+cate);
 		BoardService service = new BoardService();
-		PageDTO pageDTO = service.boardPage(Integer.parseInt(curPage));
+		PageDTO pageDTO = service.boardPage(Integer.parseInt(curPage),cate);
 		request.setAttribute("pageDTO", pageDTO);
 		
 		RequestDispatcher dis=
