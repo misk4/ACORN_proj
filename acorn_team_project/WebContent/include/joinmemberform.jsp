@@ -24,6 +24,8 @@ $("#ck").on("click",function(){
 			if(parseInt(responseData)==1){
 				alert('이미존재하는 아이디입니다');
 					
+			}else{
+				alert('가입가능');
 			}
 			
 		}
