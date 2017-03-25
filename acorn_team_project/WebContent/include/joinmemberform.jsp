@@ -5,7 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+// jQuery 기본 js파일
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+// jQuery UI 라이브러리 js파일
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+<style type="text/css">
 
+#kkk{
+color:red;
+
+}
+
+
+
+</style>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -26,6 +40,9 @@ $("#ck").on("click",function(){
 					
 			}else{
 				alert('가입가능');
+				var tag = "<button class='btn btn-success' type='submit'>가입</button>";
+				$("#signbutton").html(tag);
+				
 			}
 			
 		}
@@ -38,6 +55,9 @@ $("#ck").on("click",function(){
 
 
 })//end document
+
+
+
 
 </script>
 </head>
@@ -139,8 +159,8 @@ $("#ck").on("click",function(){
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">Sign in</button>
+                <div class="col-lg-offset-2 col-lg-10" id="signbutton">
+				<h1 id="kkk">아이디 중복확인을 해주세요 그거해야 가입가능</h1>
                 </div>
             </div>
         </form>
@@ -282,33 +302,9 @@ $("#ck").on("click",function(){
                     var divEmail = $('#divEmail');
                     var divPhoneNumber = $('#divPhoneNumber');
                      
-                    //회원가입약관
-                    if($('#provisionYn:checked').val()=="N"){
-                        modalContents.text("회원가입약관에 동의하여 주시기 바랍니다."); //모달 메시지 입력
-                        modal.modal('show'); //모달 띄우기
-                         
-                        provision.removeClass("has-success");
-                        provision.addClass("has-error");
-                        $('#provisionYn').focus();
-                        return false;
-                    }else{
-                        provision.removeClass("has-error");
-                        provision.addClass("has-success");
-                    }
+              
                      
-                    //개인정보취급방침
-                    if($('#memberInfoYn:checked').val()=="N"){
-                        modalContents.text("개인정보취급방침에 동의하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        memberInfo.removeClass("has-success");
-                        memberInfo.addClass("has-error");
-                        $('#memberInfoYn').focus();
-                        return false;
-                    }else{
-                        memberInfo.removeClass("has-error");
-                        memberInfo.addClass("has-success");
-                    }
+              
                      
                     //아이디 검사
                     if($('#id').val()==""){
