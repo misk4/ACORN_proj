@@ -19,6 +19,14 @@ and student_id = #{student_id}
 group by course_date 
 having (to_date(max(tag_time),'HH24:MI:SS')-to_date(min(tag_time),'HH24:MI:SS'))*24>=6
  </select>
+ <!-- 나의 출석 날짜 리스트 구하기  -->
+ <select id="getattendancedate" parameterType="hashmap" resultType="AttendanceDTO">
+ select course_date from attendance where substr(course_date,3,4) like '%'||#{mm}||'%' 
+and student_id = #{student_id}
+group by course_date 
+having (to_date(max(tag_time),'HH24:MI:SS')-to_date(min(tag_time),'HH24:MI:SS'))*24>=6
+ 
+ </select>
  
  <select id="studentattendancelist" parameterType="String" resultType="StudentattendancelistDTO">
  select student.name, ATTENDANCE.student_id,ATTENDANCE.course_id,ATTENDANCE.tag_time,ATTENDANCE.course_date from STUDENT join ATTENDANCE on student.id=ATTENDANCE.STUDENT_ID

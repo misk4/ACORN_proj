@@ -3,3 +3,4 @@ encoding//WebContent/Calendartest.jsp=UTF-8
 encoding//WebContent/include/doattendform.jsp=UTF-8
 encoding//WebContent/include/loginform.jsp=UTF-8
 encoding//src/com/member/controller/MemberLogin.java=UTF-8
+encoding//src/com/service/AttendanceService.java=UTF-8

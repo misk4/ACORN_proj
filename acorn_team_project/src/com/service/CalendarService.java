@@ -4,6 +4,20 @@ import java.util.Calendar;
 
 public class CalendarService {
 	
+	public static String getmm(){
+		
+Calendar cal = Calendar.getInstance();
+		
+		int month = cal.get(cal.MONTH)+1;
+		
+		String mm=String.format("%02d",month);
+		
+		return mm;
+	}
+
+		
+	
+	
 	
 	public static String getyymmdd(){
 		
