@@ -12,7 +12,7 @@
 		//style="overflow-y:hidden; width:500px; height:150px;"
 		if('${userid.classification}' == '관리자'){
 			$("#th1").html("강의 번호");
-		}else{
+		}else if('${userid.classification}' == '학생'){
 			$("#th1").html("수강 상태");
 		}
 	});
@@ -50,10 +50,10 @@
 				<c:if test="${classification == '관리자'}">
 				${dto.id }
 				</c:if>
-				<c:if test="${classification != '관리자' && dto.status}">
+				<c:if test="${classification == '학생' && dto.status}">
 				수강 중
 				</c:if>
-				<c:if test="${classification != '관리자' && !dto.status}">
+				<c:if test="${classification == '학생' && !dto.status}">
 				<a href="CourseApply?course_id=${dto.id}&student_id=${sessionScope.userid.id}">강의 신청</a>
 				</c:if>
 				</td>

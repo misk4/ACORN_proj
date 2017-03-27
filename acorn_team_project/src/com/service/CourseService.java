@@ -157,5 +157,24 @@ public class CourseService {
 
 		return list;
 	}
+	
+	
+	
+	public List<CourseDTO> teacherCourseList(String id) throws CommonException{
+		SqlSession session = MySqlsessionFactory.openSession();
+
+		List<CourseDTO> list = null;
+		try{
+			list = session.selectList(namespace+"teacherCourseList",id);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("teachercourselist 실패");
+		}finally{
+			session.close();
+		}
+
+		return list;
+	}
 
 }
