@@ -29,10 +29,7 @@ public class MyCourseList extends HttpServlet {
 		String target = null;
 		HttpSession session = request.getSession();
 		MemberDTO user = (MemberDTO)session.getAttribute("userid");
-		user = new MemberDTO();
-		user.setId("msk");
-		user.setClassification("학생");
-		session.setAttribute("userid", user);
+		
 		//git test
 
 		//minsoo
