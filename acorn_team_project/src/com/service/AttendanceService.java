@@ -18,9 +18,26 @@ import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
 public class AttendanceService {
 
 		
+		//출석한 날짜를 출력하는 메서드
+		public List<AttendanceDTO> getattendancedate(HashMap<String, String> map){
+			SqlSession session = MySqlsessionFactory.openSession();
+			List<AttendanceDTO> list = null;
+			
+			try {
+				
+				list=session.selectList("getattendancedate", map);
+				
+			} finally {
+				session.close();
+			}
+			
+			
+			return list;
+		}
 	
 	
-		//출석하기
+	
+		//異쒖꽍�븯湲�
 		public int insertattendance(HashMap<String, String> map){
 			SqlSession session = MySqlsessionFactory.openSession();
 			System.out.println(map.get("tag_time"));
@@ -37,11 +54,11 @@ public class AttendanceService {
 		return k;
 		
 		}
-		//출석헀나 확인하는 메서드(로그인시 출석하기버튼 출력할지 말지 이걸로 결정)
+		//異쒖꽍���굹 �솗�씤�븯�뒗 硫붿꽌�뱶(濡쒓렇�씤�떆 異쒖꽍�븯湲곕쾭�듉 異쒕젰�븷吏� 留먯� �씠嫄몃줈 寃곗젙)
 		public List<AttendanceDTO> checkatten(HashMap<String, String> map){
 			SqlSession session = MySqlsessionFactory.openSession();
 			List<AttendanceDTO> list = null;
-			System.out.println("들어가는 코스데이트:"+map.get("course_date"));
+			System.out.println("�뱾�뼱媛��뒗 肄붿뒪�뜲�씠�듃:"+map.get("course_date"));
 			try {
 				
 				list = session.selectList("attendancecheck", map);
@@ -52,7 +69,7 @@ public class AttendanceService {
 			
 			return list;
 		}
-		//내 출석리스트보기
+		//�궡 異쒖꽍由ъ뒪�듃蹂닿린
 		public List<AttendanceDTO> getattenlist(String student_id){
 			SqlSession session = MySqlsessionFactory.openSession();
 			List<AttendanceDTO> list = null;
@@ -65,7 +82,7 @@ public class AttendanceService {
 			
 			return list;
 		}
-		//내 출석일수 구하는 메서드
+		//�궡 異쒖꽍�씪�닔 援ы븯�뒗 硫붿꽌�뱶
 		public int getattendanceday(HashMap<String, String> map){
 		SqlSession session = MySqlsessionFactory.openSession();
 		int k = 0;	
@@ -80,7 +97,7 @@ public class AttendanceService {
 		return k;
 		}
 		
-		//관리자가 학생들 출석목록을 보기위한 메서드
+		//愿�由ъ옄媛� �븰�깮�뱾 異쒖꽍紐⑸줉�쓣 蹂닿린�쐞�븳 硫붿꽌�뱶
 		public List<StudentattendancelistDTO> studentattendancelist(String today){
 			SqlSession session = MySqlsessionFactory.openSession();
 			List<StudentattendancelistDTO> list= null;
@@ -108,5 +125,5 @@ public class AttendanceService {
 			
 			return list;
 		}
-}//end attendance서비스
+}//end attendance�꽌鍮꾩뒪
 

@@ -27,13 +27,16 @@ public class BoardService {
 	}
 	
 	//8. 페이징처리
-	public PageDTO boardPage(int curPage){
+	public PageDTO boardPage(int curPage,String cate){
 		PageDTO page = new PageDTO();
 		SqlSession session = MySqlsessionFactory.openSession();
 		List<BoardDTO> list = null;
+		System.out.println("서비스에서 받는 카테:"+cate);
 		int skip = (curPage -1) *page.getPerpage();
+		HashMap<String, String> map = new HashMap<>();
+		map.put("cate", cate);
 		try{
-			list=session.selectList(namespace+"boardList",null,
+			list=session.selectList(namespace+"boardList",map,
 					new RowBounds(skip,page.getPerpage()));
 		
 		}finally{

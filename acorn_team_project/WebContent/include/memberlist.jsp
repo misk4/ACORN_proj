@@ -18,21 +18,24 @@ text-align:left;
 
 </style>
 <script>
+function auth(kk,id){
+//kk = this id=list.id
+
+	
 $(document).ready(function(){
 
-$("#button").on("click",function(){
 	
 	$.ajax({
 		type: "get",
 		url:"ajax/updateconfirmationajax.jsp",
 		data: {
-			v1:$("#v1").val()
+			v1:id
 		},
 		dataType:"text",
 		success: function(responseData, status, xhr){
 			
-			$("#button").remove;
-			$("#result").text("승인완료");
+			$(kk).replaceWith("<p>승인완료</p>");
+			
 			
 			
 		}
@@ -42,7 +45,7 @@ $("#button").on("click",function(){
 	
 
 	
-})//on click
+
 
 
 
@@ -52,7 +55,7 @@ $("#button").on("click",function(){
 
 
 })//end document
-
+}
 function modify(kk,as){
 	
 
@@ -155,8 +158,8 @@ function realmodify(kk,as){
 						readonly="readonly"></td>
 					<c:if test="${mem == '가입'}">
 						<input type="hidden" name="v1" id="v1" value="${list.id }">
-						<td id="result"><button type="button" class="btn btn-danger"
-								id="button">승인</button></td>
+						<td><button type="button" class="btn btn-danger"
+								 onclick="auth(this,'${list.id}')">승인</button></td>
 					</c:if>
 					<c:if test="${mem == '학생' || mem == '선생님'}">
 						<td>
