@@ -27,7 +27,7 @@ where course.teacher_id = teacher.id
 <select id = "myCourseList" resultType = "CourseDTO" parameterType="string">
 select course.id, course.name,teacher.name as "teacher_name", start_time,end_time,start_day,end_day,days,manager_id
 ,max_student,total_days,teacher.phone_num "teacher_phone",teacher.email "teacher_email",manager.phone_num "manager_phone",manager.email "manager_email"
-from course left outer join 
+from course join 
 (select course_id
 from register
 where register.student_id = #{id})cs
