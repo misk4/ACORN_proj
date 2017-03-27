@@ -101,7 +101,7 @@
 				<h1>${userid.classification }:${userid.name }</h1>
 				</c:if>
 				<c:if test="${userid != null && userid.classification=='관리자'}">
-					<a href="MemberLogout">로그아웃</a>
+					<a href="MemberLogout" class="btn btn-warning" role="button">로그아웃</a>
 				</c:if>
 				<c:if
 					test="${userid != null && userid.classification=='학생' && whatpage != 'doattendform'}">
