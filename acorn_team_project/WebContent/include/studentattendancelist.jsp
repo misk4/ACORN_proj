@@ -32,4 +32,4 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
   </table>
   </div>
   
-  <a href="AbsenceStudentlist" class="btn btn-link" role="button">출석하지않은인원확인하기</a>
+  <a href="AbsenceStudentlist" class="btn btn-success" role="button">출석하지않은인원확인하기</a>

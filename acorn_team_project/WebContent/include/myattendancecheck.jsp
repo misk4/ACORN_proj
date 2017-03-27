@@ -32,4 +32,4 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
   </table>
   </div>
   
-  <a href="MemberInfo" class="btn btn-link" role="button">내정보보기</a>
+  <a href="MemberInfo" class="btn btn-success" role="button">내정보보기</a>

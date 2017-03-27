@@ -19,7 +19,8 @@ text-align:left;
 </style>
 <script>
 function auth(kk,id){
-//kk = this id=list.id
+//kk = this
+//id=list.id
 
 	
 $(document).ready(function(){

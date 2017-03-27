@@ -47,7 +47,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 					class="form-control" id="pw" placeholder="비밀번호" name="passwd">
 			</div>
 			<button type="submit" class="btn btn-primary" id="submit">로그인</button>
-			<a href="joinmemberform.jsp">회원가입</a>
+			<a href="joinmemberform.jsp" role="button" class="btn btn-warning">회원가입</a>
 		</form>
 		
 		
