@@ -57,6 +57,7 @@ public class MemberLogin extends HttpServlet {
 			list = atservice.checkatten(map);
 			System.out.println("리스트널?:"+list);
 			if(list==null || list.size()==0){
+				request.setAttribute("whatpage!", "doattendform");
 				target = "doattendform.jsp";
 			}else{
 				target="Attendancechecklist";

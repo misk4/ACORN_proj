@@ -27,10 +27,7 @@ public class CourseList extends HttpServlet {
 		String target = null;
 		HttpSession session = request.getSession();
 		MemberDTO user = (MemberDTO)session.getAttribute("userid");
-		user = new MemberDTO();
-		user.setId("manager");
-		user.setClassification("관리자");
-		session.setAttribute("userid", user);
+		
 		//git test
 
 		//minsoo
