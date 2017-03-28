@@ -38,7 +38,7 @@ $(document).ready(function(){
 
 <tr>
 	<th>선생님 아이디</th>
-	<td><input type="text" name="name" value = "${course.teacher_id }"></td>
+	<td><input type="text" name="teacher_name" value = "${course.teacher_id }"></td>
 </tr>
 
 <tr>

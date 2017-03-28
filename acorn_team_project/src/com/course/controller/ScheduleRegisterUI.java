@@ -9,33 +9,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.entity.CourseDTO;
-import com.entity.MemberDTO;
+import com.entity.ScheduleDTO;
 import com.exception.CommonException;
 import com.service.CourseService;
 
 /**
- * Servlet implementation class CourseSchedule
+ * Servlet implementation class ScheduleRegisterUI
  */
-@WebServlet("/CourseSchedule")
-public class CourseSchedule extends HttpServlet {
+@WebServlet("/ScheduleRegisterUI")
+public class ScheduleRegisterUI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String courseId = request.getParameter("id");
 		CourseService service = new CourseService();
-		String target = null;
-		HttpSession session = request.getSession();
-		MemberDTO user = (MemberDTO)session.getAttribute("userid");
 		
-		List<CourseDTO> list = null;
+		List<ScheduleDTO> list = null;
+		String target = null;
 		try {
-			list = service.teacherCourseList(user.getId());
+			list = service.scheduleList(courseId);
 			
-			request.setAttribute("courseList", list);
-			target = "teacherCourseList.jsp";
+			request.setAttribute("scheduleList", list);
+			target = "scheduleRegister.jsp";
 		} catch (CommonException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,8 +40,7 @@ public class CourseSchedule extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			request.setAttribute("link", "Home");
 		}
-
-
+		
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}

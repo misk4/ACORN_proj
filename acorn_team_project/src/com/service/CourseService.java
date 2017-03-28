@@ -8,6 +8,7 @@ import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import com.DAO.MySqlsessionFactory;
 import com.entity.CourseDTO;
+import com.entity.ScheduleDTO;
 import com.exception.CommonException;
 
 public class CourseService {
@@ -175,6 +176,26 @@ public class CourseService {
 		}
 
 		return list;
+	}
+	
+	public List<ScheduleDTO> scheduleList(String course_id) throws CommonException{
+		
+		SqlSession session = MySqlsessionFactory.openSession();
+
+		List<ScheduleDTO> list = null;
+		try{
+			list = session.selectList(namespace+"scheduleList",course_id);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("scheduleList 실패");
+		}finally{
+			session.close();
+		}
+
+		return list;
+		
+		
 	}
 
 }

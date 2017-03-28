@@ -89,4 +89,12 @@ having count(register.course_id) &gt;= avg(course.max_student)
  select course_id from register where student_id = #{id}
  </select>
  
+ 
+ <select id = "teacherCourseList" parameterType = "string" resultType = "CourseDTO">
+select course.id, course.name,teacher.name as "teacher_name", start_time,end_time,start_day,end_day,days,manager_id
+,max_student,total_days,teacher.phone_num "teacher_phone",teacher.email "teacher_email",manager.phone_num "manager_phone",manager.email "manager_email"
+from course,teacher,manager
+where course.teacher_id = #{id} and course.teacher_id = teacher.id and course.manager_id = manager.id
+ </select>
+ 
 </mapper>
