@@ -36,7 +36,7 @@ $(document).ready(function(){
 		success: function(responseData, status, xhr){
 			
 			$(kk).replaceWith("<p>승인완료</p>");
-			
+			aa();
 			
 			
 		}
@@ -159,7 +159,7 @@ function realmodify(kk,as){
 						readonly="readonly"></td>
 					<c:if test="${mem == '가입'}">
 						<input type="hidden" name="v1" id="v1" value="${list.id }">
-						<td><button type="button" class="btn btn-danger"
+						<td><button type="button" class="btn btn-danger authk"
 								 onclick="auth(this,'${list.id}')">승인</button></td>
 					</c:if>
 					<c:if test="${mem == '학생' || mem == '선생님'}">

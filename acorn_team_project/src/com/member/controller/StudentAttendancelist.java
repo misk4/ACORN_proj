@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.entity.StudentDTO;
 import com.entity.StudentattendancelistDTO;
 import com.service.AttendanceService;
 import com.service.CalendarService;
+import com.service.MemberService;
 
 
 
@@ -24,9 +26,14 @@ public class StudentAttendancelist extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		CalendarService cs = new CalendarService();
+		
 		AttendanceService service = new AttendanceService();
-		String today = cs.getyymmdd();
+		String today = CalendarService.getyymmdd();
+		
+		
+		
+		
+		
 		
 		List<StudentattendancelistDTO> list = service.studentattendancelist(today);
 		
