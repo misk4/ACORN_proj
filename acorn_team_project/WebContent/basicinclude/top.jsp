@@ -1,3 +1,4 @@
+<%@page import="com.service.MemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,6 +17,9 @@
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {
 	height: 1500px
+}
+#watingnumber {
+color:red;
 }
 
 /* Set gray background color and 100% height */
@@ -64,7 +68,17 @@
 		return i;
 	}
 </script>
+<%
+MemberService memberservice = new MemberService();
+boolean k = false;
+if(memberservice.watingjoinlist().size()!=0){
+	k = true;
+	session.setAttribute("watingnumber", memberservice.watingjoinlist().size());
+}
+	session.setAttribute("isnoti", k);
 
+
+%>
 
 <body onload="startTime()">
 
@@ -84,7 +98,12 @@
 					<c:if test="${userid!=null && userid.classification=='관리자'}">
 						<li><a href="AllMemberlist?mem=학생">모든학생보기</a></li>
 						<li><a href="AllMemberlist?mem=선생님">모든선생님보기</a></li>
-						<li><a href="AllMemberlist?mem=가입">가입대기자보기</a></li>
+						<c:if test="${userid!=null && userid.classification=='관리자' && isnoti }">
+						<li><a href="AllMemberlist?mem=가입" id="wating">가입대기자보기<div id="watingnumber">(현재${watingnumber}명)</div></a></li>
+						
+						
+						
+						</c:if>
 					</c:if>
 					<c:if test="${userid!=null}">
 						<li><a href="CourseList">강의목록</a></li>

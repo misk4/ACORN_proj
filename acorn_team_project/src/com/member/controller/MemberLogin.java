@@ -85,6 +85,7 @@ public class MemberLogin extends HttpServlet {
          
          dto.setClassification("관리자");
          target = "StudentAttendancelist";
+         
       }else if(dto instanceof TeacherDTO){
          dto.setClassification("선생님");
          target = "notice.jsp";

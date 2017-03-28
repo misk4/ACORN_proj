@@ -6,7 +6,31 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" 
 uri="http://java.sun.com/jsp/jstl/functions" %> 
-	
+
+<c:if test="${isnoti }">
+<script>
+var message = "가입승인 요청이있습니다";
+
+    var options = {
+        body: message
+        
+}
+    
+    var notification = new Notification("가입승인 요청여부", options);
+    setTimeout(function () {
+        
+        notification.close();
+    }, 10000);
+
+
+</script>
+
+
+</c:if>
+
+
+
+
  <div class="table-responsive">          
   <table class="table">
     <thead>
