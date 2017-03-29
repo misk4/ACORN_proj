@@ -97,4 +97,8 @@ from course,teacher,manager
 where course.teacher_id = #{id} and course.teacher_id = teacher.id and course.manager_id = manager.id
  </select>
  
+ <select id = "scheduleList" parameterType ="int" resultType = "ScheduleDTO">
+ select id,course_id,course_date,content,filepath from schedule where course_id = #{course_id} order by course_date asc
+ </select>
+ 
 </mapper>

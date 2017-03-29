@@ -11,6 +11,8 @@ import com.entity.CourseDTO;
 import com.entity.ScheduleDTO;
 import com.exception.CommonException;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 public class CourseService {
 
 	String namespace = "CourseMapper.";
@@ -178,14 +180,13 @@ public class CourseService {
 		return list;
 	}
 	
-	public List<ScheduleDTO> scheduleList(String course_id) throws CommonException{
+	public List<ScheduleDTO> scheduleList(String cid) throws CommonException{
 		
 		SqlSession session = MySqlsessionFactory.openSession();
-
+		int course_id = Integer.parseInt(cid);
 		List<ScheduleDTO> list = null;
 		try{
 			list = session.selectList(namespace+"scheduleList",course_id);
-			
 		}catch(Exception e){
 			e.printStackTrace();
 			throw new CommonException("scheduleList 실패");
