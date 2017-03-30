@@ -195,6 +195,21 @@ public class CourseService {
 		}
 
 		return list;
+	
+	}
+	
+public void scheduleUpdate(ScheduleDTO dto) throws CommonException{
+		
+		SqlSession session = MySqlsessionFactory.openSession();
+		try{
+			int n = session.update(namespace+"scheduleUpdate",dto);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("scheduleList 실패");
+		}finally{
+			session.close();
+		}
 		
 		
 	}
