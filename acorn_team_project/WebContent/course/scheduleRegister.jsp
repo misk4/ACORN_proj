@@ -12,43 +12,39 @@
 $(document).ready(function(){
 	
 		$('.divtable').attr('style','display:table');
-		console.log($(".divtable"));
 		$('.divtr').attr('style','display:table-row');
 		$(".updateForm").attr("style","display:table-row");
 		$(".spantd").attr("style","display:table-cell");
 		$(".spantd2").attr("style","display:table-cell");
 	
 	
-	   $(".updateForm").submit(function(){
+	   $('.but').click(function(){
 		  event.preventDefault();
 		  
-		  var $form = $(this);
-		  var formData = $form.serializeArray();
+		  var index = $(this).attr("id");
+		  var form = $('form')[index];
+		  var formData = new FormData(form);
 		  
-		  $.each(formData,function(i,field){
-			  console.log(field.value);
-		  })
-		  
-		  var $button = $form.find('button');
-		  
-		  console.log(formData);
-		   
+		  //formData.append("id",$("input[name==id]").val());
+		  //formData.append("course_date",$("input[name==course_date]").val());
+		  //formData.append("content",$("input[name==content]").val());
+		  //formData.append("uploadFile",$("input[name==uploadFile]")[0].files[0]);
+		 
 		   
 		   //ajax 통신
-		   /*$.ajax({
-			   type:"get",
-			   url:"calc.jsp",
-			   data:{
-				  v1: $("#v1").val(),
-				  v2: $("#v2").val()
-			   },
+		   $.ajax({
+			   type:'POSt',
+			   url:'/acorn_team_project/ScheduleUpdate',
+			   data:formData,
+			   processData:false,
+			   contentType: false,
 			   success:function(responseData,status,xhr){
-				   $("#result").text(responseData);
+				   alert("수정 성공");
 			   },
 			   error:function(error){
 				  console.log(error);   
 			   }
-		   });*/
+		   });
 		   
 	   });
 });
@@ -66,11 +62,12 @@ $(document).ready(function(){
 		</div>
 		<c:forEach var="dto" items="${scheduleList}" varStatus="status">
 
-			<form class="updateForm" action="ScheduleUpdate" method="post">
+			<form class="updateForm"  method = "post" enctype = "multipart/form-data">
+					<input type = "hidden" name = "id" value = "${dto.id }">
 					<span class="spantd"><input type="text" value="${dto.course_date }" name="course_date"></span>
 					<span class="spantd2"><input type="text" value="${dto.content }" name="content"></span> 
-				    <span class="spantd"><img src="/images/${dto.filepath}" width="100"height="100"><input type="file" name="uploadFile"><input type="hidden" name="filepath" value = ""></span> 
-					<span class="spantd"><button>수정</button></span>
+				    <span class="spantd"><span class ="spanfile">${dto.filepath }</span><input type="file" name="uploadFile"><input type="hidden" name="filepath" value = "${dto.filepath }"></span> 
+					<span class="spantd"><button class = "but" id ="${status.index}" }>수정</button></span>
 			</form>
 
 		</c:forEach>

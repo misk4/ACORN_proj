@@ -101,4 +101,8 @@ where course.teacher_id = #{id} and course.teacher_id = teacher.id and course.ma
  select id,course_id,course_date,content,filepath from schedule where course_id = #{course_id} order by course_date asc
  </select>
  
+ <update id = "scheduleUpdate" parameterType ="ScheduleDTO">
+ update schedule set course_date = #{course_date}, content = #{content}, filepath = #{filepath} where id = #{id}
+ </update>
+ 
 </mapper>
