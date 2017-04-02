@@ -11,11 +11,39 @@ public class MemberDTO {
       private String email;
       private int confirmation;
       private String classification;
-   
+      private String articlecategory;
       
       
       
-      public String getPhone_num() {
+      
+      
+      public MemberDTO(String id, String name, String birthdate, String password, String gender, String phone_num,
+			String email, int confirmation, String classification, String articlecategory) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.birthdate = birthdate;
+		this.password = password;
+		this.gender = gender;
+		this.phone_num = phone_num;
+		this.email = email;
+		this.confirmation = confirmation;
+		this.classification = classification;
+		this.articlecategory = articlecategory;
+	}
+
+
+	public String getArticlecategory() {
+		return articlecategory;
+	}
+
+
+	public void setArticlecategory(String articlecategory) {
+		this.articlecategory = articlecategory;
+	}
+
+
+	public String getPhone_num() {
 		return phone_num;
 	}
 

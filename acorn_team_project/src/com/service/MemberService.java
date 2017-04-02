@@ -146,4 +146,24 @@ public class MemberService {
 		return k;
 	}
 	
+	public int updatearticlecategory(HashMap<String, String> map){
+		SqlSession session = MySqlsessionFactory.openSession();
+		int k = 0;
+		try {
+			session.update("updatearticlecategory", map);
+			session.commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			session.rollback();
+		}
+		finally {
+			session.close();
+			}
+			
+		
+		
+		return k;
+	}
+	
 }

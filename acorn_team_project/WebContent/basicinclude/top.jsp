@@ -85,7 +85,7 @@ if(memberservice.watingjoinlist().size()!=0){
 	<div class="container-fluid">
 		<div class="row content">
 			<div class="col-sm-3 sidenav">
-				<h4>뭐로할까</h4>
+				<h4>회원관리시스템</h4>
 				<ul class="nav nav-pills nav-stacked">
 					<c:if test="${userid!=null}">
 						<li class="active"><a href="BoardList?cate=공지사항">공지사항</a></li>
@@ -101,13 +101,14 @@ if(memberservice.watingjoinlist().size()!=0){
 						<c:if test="${userid!=null && userid.classification=='관리자' && isnoti }">
 						<li><a href="AllMemberlist?mem=가입" id="wating">가입대기자보기<div id="watingnumber">(현재${watingnumber}명)</div></a></li>
 						
-						
-						
 						</c:if>
 					</c:if>
 					<c:if test="${userid!=null}">
 						<li><a href="CourseList">강의목록</a></li>
+						<li><a href="setreadarticle.jsp">관심뉴스설정</a></li>
+						<li><a href="TodayArticle">오늘의뉴스</a></li>
 					</c:if>
+					
 				</ul>
 				<br>
 
