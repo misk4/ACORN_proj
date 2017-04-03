@@ -143,14 +143,14 @@ public class CourseService {
 
 		return list;
 	}
-	
+
 	public List<CourseDTO> myCourseList(String id) throws CommonException{
 		SqlSession session = MySqlsessionFactory.openSession();
 
 		List<CourseDTO> list = null;
 		try{
 			list = session.selectList(namespace+"myCourseList",id);
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 			throw new CommonException("mycourselist 실패");
@@ -160,16 +160,16 @@ public class CourseService {
 
 		return list;
 	}
-	
-	
-	
+
+
+
 	public List<CourseDTO> teacherCourseList(String id) throws CommonException{
 		SqlSession session = MySqlsessionFactory.openSession();
 
 		List<CourseDTO> list = null;
 		try{
 			list = session.selectList(namespace+"teacherCourseList",id);
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 			throw new CommonException("teachercourselist 실패");
@@ -179,9 +179,9 @@ public class CourseService {
 
 		return list;
 	}
-	
+
 	public List<ScheduleDTO> scheduleList(String cid) throws CommonException{
-		
+
 		SqlSession session = MySqlsessionFactory.openSession();
 		int course_id = Integer.parseInt(cid);
 		List<ScheduleDTO> list = null;
@@ -195,11 +195,11 @@ public class CourseService {
 		}
 
 		return list;
-	
+
 	}
-	
-public void scheduleUpdate(ScheduleDTO dto) throws CommonException{
-		
+
+	public void scheduleUpdate(ScheduleDTO dto) throws CommonException{
+
 		SqlSession session = MySqlsessionFactory.openSession();
 		try{
 			int n = session.update(namespace+"scheduleUpdate",dto);
@@ -210,8 +210,24 @@ public void scheduleUpdate(ScheduleDTO dto) throws CommonException{
 		}finally{
 			session.close();
 		}
-		
-		
+
+
+	}
+
+	public void scheduleInsert(ScheduleDTO dto) throws CommonException{
+
+		SqlSession session = MySqlsessionFactory.openSession();
+		try{
+			int n = session.insert(namespace+"scheduleInsert",dto);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("scheduleInsert 실패");
+		}finally{
+			session.close();
+		}
+
+
 	}
 
 }

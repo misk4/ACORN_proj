@@ -105,4 +105,8 @@ where course.teacher_id = #{id} and course.teacher_id = teacher.id and course.ma
  update schedule set course_date = #{course_date}, content = #{content}, filepath = #{filepath} where id = #{id}
  </update>
  
+ <insert id = "scheduleInsert" parameterType="ScheduleDTO">
+ insert into schedule values(schedule_seq.nextval,#{course_id},#{course_date},#{content},#{filepath})
+ </insert>
+ 
 </mapper>

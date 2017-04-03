@@ -34,7 +34,7 @@ public class ScheduleRegisterUI extends HttpServlet {
 				
 				System.out.println(scheduleDTO.getContent());
 			}
-			
+			request.setAttribute("course_id", courseId);
 			request.setAttribute("scheduleList", list);
 			target = "scheduleRegister.jsp";
 		} catch (CommonException e) {

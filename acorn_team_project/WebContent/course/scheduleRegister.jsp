@@ -11,18 +11,57 @@
 
 $(document).ready(function(){
 	
+		var formIndex;
+		
 		$('.divtable').attr('style','display:table');
 		$('.divtr').attr('style','display:table-row');
 		$(".updateForm").attr("style","display:table-row");
-		$(".spantd").attr("style","display:table-cell");
+		$(".insertForm").attr("style","display:table-row");
+		$(".spantd").attr("style","display:table-cell;word-break:break-all");
 		$(".spantd2").attr("style","display:table-cell");
+		
+		var inputIndex = 1;
+		$('.addInputButton').click(function(){
+			inputIndex++;
+			
+			
+		});
+		
+		$('.insertButton').click(function(){
+			event.preventDefault();
+			console.log(document.getElementsByClassName('updateForm').length);
+			 
+			var index = inputIndex + document.getElementsByClassName('updateForm').length;
+			
+			 var form = $('form')[index-1];
+			 //var form = $('form[name="'+formName+'"]');
+			 console.log(form);
+			 var formData = new FormData(form);
+			 
+			 $.ajax({
+				   type:'POSt',
+				   url:'/acorn_team_project/ScheduleRegister',
+				   data:formData,
+				   processData:false,
+				   contentType: false,
+				   success:function(responseData,status,xhr){
+					   alert('반영 성공');
+					   location.reload();
+				   },
+				   error:function(error){
+					  console.log(error);   
+				   }
+			   });
+		 
+	    });
 	
 	
-	   $('.but').click(function(){
+	   $('.updateButton').click(function(){
 		  event.preventDefault();
 		  
 		  var index = $(this).attr("id");
 		  var form = $('form')[index];
+		  console.log(form);
 		  var formData = new FormData(form);
 		  
 		  //formData.append("id",$("input[name==id]").val());
@@ -39,7 +78,7 @@ $(document).ready(function(){
 			   processData:false,
 			   contentType: false,
 			   success:function(responseData,status,xhr){
-				   alert("수정 성공");
+				   alert('수정 성공');
 			   },
 			   error:function(error){
 				  console.log(error);   
@@ -66,12 +105,23 @@ $(document).ready(function(){
 					<input type = "hidden" name = "id" value = "${dto.id }">
 					<span class="spantd"><input type="text" value="${dto.course_date }" name="course_date"></span>
 					<span class="spantd2"><input type="text" value="${dto.content }" name="content"></span> 
-				    <span class="spantd"><span class ="spanfile">${dto.filepath }</span><input type="file" name="uploadFile"><input type="hidden" name="filepath" value = "${dto.filepath }"></span> 
-					<span class="spantd"><button class = "but" id ="${status.index}" }>수정</button></span>
+				    <span class="spantd"><input type="file" name="uploadFile"><span class ="spanfile">${dto.filepath }</span><input type="hidden" name="filepath" value = "${dto.filepath }"></span> 
+					<span class="spantd"><button class = "updateButton" id ="${status.index}" >수정</button></span>
 			</form>
-
 		</c:forEach>
-
+		<input type = "hidden" id = "formIndex" value = 123/>
+		<div class="divtr"><button class = "addInputButton" >등록</button><br></div>
+		
+			<form class="insertForm"  method = "post" enctype = "multipart/form-data" name = "formInput1">
+					<input type = "hidden" name = "course_id" value = ${course_id }>
+					<span class="spantd"><input type="text" value="" name="course_date"></span>
+					<span class="spantd2"><input type="text" value="" name="content"></span> 
+				    <span class="spantd"><span class ="spanfile"></span><input type="file" name="uploadFile"><input type="hidden" name="filepath" value = "${dto.filepath }"></span> 
+					<span class="spantd"><button class = "insertButton" id ="Input1" >등록</button></span>
+			</form>
+		
+			
+			
 	</div>
 
 
