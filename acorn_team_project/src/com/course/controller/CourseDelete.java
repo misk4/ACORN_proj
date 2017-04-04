@@ -30,18 +30,22 @@ public class CourseDelete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CourseService service = new CourseService();
 		String target = null;
-		int courseId = Integer.parseInt(request.getParameter("id"));
+
+		String[] courseIds = request.getParameterValues("courseList[]");
+		
 		try {
-			service.deleteCourse(courseId);
-			response.sendRedirect("CourseList");
+			service.deleteCourse(courseIds);
+			//response.sendRedirect("CourseList");
+			response.setContentType("text/plain");  
+	        response.setCharacterEncoding("UTF-8");
 		} catch (CommonException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("message", e.getMessage());
+			/*request.setAttribute("message", e.getMessage());
 			request.setAttribute("link", "Home");
 			RequestDispatcher dis = request.getRequestDispatcher(target);
-			dis.forward(request, response);
+			dis.forward(request, response);*/
 		}
 		
 		

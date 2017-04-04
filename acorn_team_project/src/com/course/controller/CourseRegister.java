@@ -48,18 +48,20 @@ public class CourseRegister extends HttpServlet {
 		
 		try {
 			service.registerCourse(course);
-			target = "CourseList";
+			//target = "CourseList";
+			response.sendRedirect("CourseList");
 		} catch (CommonException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
 			request.setAttribute("message", e.getMessage());
 			request.setAttribute("link", "CourseRegisterUI");
+			RequestDispatcher dis = request.getRequestDispatcher(target);
+			dis.forward(request, response);
 			
 		}
 		
-		RequestDispatcher dis = request.getRequestDispatcher(target);
-		dis.forward(request, response);
+		
 	}
 
 }

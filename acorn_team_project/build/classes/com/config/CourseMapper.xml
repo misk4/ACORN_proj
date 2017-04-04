@@ -70,8 +70,12 @@ having count(register.course_id) &gt;= avg(course.max_student)
  
  
  <!-- 강의삭제 -->
- <delete id = "deleteCourse" parameterType = "int">
- delete from course where id = #{id}
+ <delete id = "deleteCourse">
+ delete from course 
+ where id in 
+ <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+ #{id}
+ </foreach>
  </delete>
  
  

@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,11 +50,15 @@ public class CourseService {
 		}
 	}
 
-	public void deleteCourse(int id) throws CommonException{
+	public void deleteCourse(String[] ids) throws CommonException{
 		SqlSession session = MySqlsessionFactory.openSession();
-
+		List<Integer> list = new ArrayList<>();
+		for(int i=0;i<ids.length;i++){
+			list.add(Integer.parseInt(ids[i]));
+		}
+		
 		try{
-			int n = session.delete(namespace+"deleteCourse", id);
+			int n = session.delete(namespace+"deleteCourse",list );
 			session.commit();
 		}catch(Exception e){
 			e.printStackTrace();
