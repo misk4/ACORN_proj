@@ -9,13 +9,13 @@
 <body>
 <form action="UpdateArticleCategory">
 <div class="radio">
-  <label><input type="radio" name="category">스포츠</label>
+  <label><input type="radio" name="category" value="스포츠">스포츠</label>
 </div>
 <div class="radio">
-  <label><input type="radio" name="category">IT</label>
+  <label><input type="radio" name="category" value="과학IT">과학IT</label>
 </div>
 <div class="radio">
-  <label><input type="radio" name="category">경제</label>
+  <label><input type="radio" name="category" value="경제">경제</label>
 </div><br>
 
 <input type="submit" value="변경">

@@ -23,7 +23,7 @@ public class UpdateArticleCategory extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession();
-			String articlecategory = request.getParameter("categoty");
+			String articlecategory = request.getParameter("category");
 			MemberDTO dto =(MemberDTO)session.getAttribute("userid");
 			String id = dto.getId();
 			HashMap<String, String> map = new HashMap<>();

@@ -150,7 +150,7 @@ public class MemberService {
 		SqlSession session = MySqlsessionFactory.openSession();
 		int k = 0;
 		try {
-			session.update("updatearticlecategory", map);
+			k = session.update("updatearticlecategory", map);
 			session.commit();
 			
 		}catch(Exception e){
