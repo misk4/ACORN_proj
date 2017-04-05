@@ -63,20 +63,29 @@ $(document).ready(function(){
 		$('.searchCourse').click(function(){
 			var key = $('#searchKey').val();
 			
-			$('.TD').each(function() {
-			$(this).parent('tr').css('color', 'black');
-			$(this).parent('tr').css('background-color', 'white');
-			});
-			$('.TD').each(function() {
+			function reset(){
+				$('.TD').each(function() {
+				$(this).parent('tr').css('color', 'black');
+				$(this).parent('tr').css('background-color', 'white');
 				
+				});
+				
+				return Promise.resolve();
+			}
+			
+			function highlight(){
+				$('.TD').each(function() {
 				if(this.innerText.includes(key)){
 					$(this).parent('tr').css('color', 'red');
 					$(this).parent('tr').css('background-color', 'yellow');
-				}else{
-					$(this).parent('tr').css('color', 'black');
-					$(this).parent('tr').css('background-color', 'white');
 				}
-			});
+				});
+				
+				return Promise.resolve();
+			}	
+				
+				reset().then(highlight);
+				
 			
 			
 		});
@@ -128,7 +137,7 @@ $(document).ready(function(){
 				<a href="CourseApply?course_id=${dto.id}&student_id=${sessionScope.userid.id}">강의 신청</a>
 				</c:if>
 				</td>
-				<td class = "TD">${dto.name }</td>
+				<td class = "TD"><a href = "CourseInfo?course_id=${dto.id}">${dto.name }</a></td>
 				<td class = "TD">${dto.teacher_name }</td>
 				<td class ="TD">${dto.start_time }</td>
 				<td class ="TD">${dto.end_time }</td>

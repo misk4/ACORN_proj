@@ -235,5 +235,40 @@ public class CourseService {
 
 
 	}
+	
+	public void scheduleDelete(String[] ids) throws CommonException{
+		SqlSession session = MySqlsessionFactory.openSession();
+		List<Integer> list = new ArrayList<>();
+		for(int i=0;i<ids.length;i++){
+			list.add(Integer.parseInt(ids[i]));
+		}
+		
+		try{
+			int n = session.delete(namespace+"deleteSchedule",list );
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("일정 삭제 실패");
+		}finally{
+
+			session.close();
+		}
+	}
+	
+	public List<ScheduleDTO> getScheduleByCourse(String course_id) throws CommonException{
+		SqlSession session = MySqlsessionFactory.openSession();
+		List<ScheduleDTO> list = null;
+		try{
+			list = session.selectList(namespace+"getScheduleByCourse", Integer.parseInt(course_id));
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("강의 수정 실패");
+		}finally{
+
+			session.close();
+		}
+
+		return list;
+	}
 
 }

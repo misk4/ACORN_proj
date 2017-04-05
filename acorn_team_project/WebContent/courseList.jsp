@@ -3,7 +3,7 @@
 
 <jsp:include page="basicinclude/top.jsp"/>
 <jsp:include page="course/courseList.jsp" flush="true" />
-
+<jsp:include page="basicinclude/bottom.jsp"/>
 
 
 

@@ -30,10 +30,7 @@ public class ScheduleRegisterUI extends HttpServlet {
 		String target = null;
 		try {
 			list = service.scheduleList(courseId);
-			for (ScheduleDTO scheduleDTO : list) {
-				
-				System.out.println(scheduleDTO.getContent());
-			}
+			
 			request.setAttribute("course_id", courseId);
 			request.setAttribute("scheduleList", list);
 			target = "scheduleRegister.jsp";
