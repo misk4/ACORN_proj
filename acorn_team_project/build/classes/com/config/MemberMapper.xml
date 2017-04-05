@@ -6,15 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
  <!-- 로그인 -->
  <select id = "studentLogin" parameterType = "hashmap" resultType = "StudentDTO">
- select id,name,birthdate,password,gender,phone_num,email,confirmation from student where id = #{userid} and password = #{passwd}
+ select id,name,birthdate,password,gender,phone_num,email,confirmation,articlecategory from student where id = #{userid} and password = #{passwd}
  </select>
  
  <select id = "teacherLogin" parameterType = "hashmap" resultType = "TeacherDTO">
- select id,name,birthdate,password,gender,phone_num,email,confirmation from teacher where id = #{userid} and password = #{passwd}
+ select id,name,birthdate,password,gender,phone_num,email,confirmation,articlecategory from teacher where id = #{userid} and password = #{passwd}
  </select>
  
  <select id = "managerLogin" parameterType = "hashmap" resultType = "ManagerDTO">
- select id,name,birthdate,password,gender,phone_num,email,confirmation from manager where id = #{userid} and password = #{passwd}
+ select id,name,birthdate,password,gender,phone_num,email,confirmation,articlecategory from manager where id = #{userid} and password = #{passwd}
  </select>
  
  
@@ -36,15 +36,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
  <!-- 회원 정보 -->
   <select id = "studentInfo" parameterType = "hashmap" resultType = "StudentDTO">
- select id,name,birthdate,password,gender,phone_num,email,confirmation from student where id = #{userid} and password = #{passwd}
+ select id,name,birthdate,password,gender,phone_num,email,confirmation,articlecategory from student where id = #{userid} and password = #{passwd}
  </select>
  
  <select id = "teacherInfo" parameterType = "hashmap" resultType = "TeacherDTO">
- select id,name,birthdate,password,gender,phone_num,email,confirmation from teacher where id = #{userid} and password = #{passwd}
+ select id,name,birthdate,password,gender,phone_num,email,confirmation,articlecategory from teacher where id = #{userid} and password = #{passwd}
  </select>
  
  <select id = "managerInfo" parameterType = "hashmap" resultType = "ManagerDTO">
- select id,name,birthdate,password,gender,phone_num,email,confirmation from manager where id = #{userid} and password = #{passwd}
+ select id,name,birthdate,password,gender,phone_num,email,confirmation,articlecategory from manager where id = #{userid} and password = #{passwd}
  </select>
  <!-- 모든학생리스트 -->
  <select id="getallstudentlist" resultType="MemberDTO">

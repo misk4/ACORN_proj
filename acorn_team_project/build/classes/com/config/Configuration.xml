@@ -38,5 +38,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/MemberMapper.xml" />
 		<mapper resource="com/config/CourseMapper.xml" />
 		<mapper resource="com/config/AttendanceMapper.xml" />
+		<mapper resource="com/config/ArticleMapper.xml" />
 	</mappers>
 </configuration>
