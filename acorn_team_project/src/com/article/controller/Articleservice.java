@@ -38,6 +38,7 @@ public class Articleservice {
 		String readurl = "";
 		
 		if(map.get("link")==null){
+			//rss주소 불러와주는 메서드
 		NewsArticleDTO dto = getrssaddress(map);
 		readurl=dto.getNewsrssaddress();
 		}else{

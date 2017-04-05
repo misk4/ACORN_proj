@@ -42,7 +42,7 @@ public class TodayArticle extends HttpServlet {
 		
 		session.setAttribute("newscompany", newscompany);
 		session.setAttribute("rss", rss);
-		RequestDispatcher dis = request.getRequestDispatcher("readarticle.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("readarticle2.jsp");
 		dis.forward(request, response);
 		
 		

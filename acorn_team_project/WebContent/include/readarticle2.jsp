@@ -1,6 +1,3 @@
-//
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" 
@@ -30,11 +27,10 @@ font-size:20px;
 		$(x).find("item").each(function(idx,obj){
 			   var link =  $(this).find("link").text();
 			   var title = $(this).find("title").text();
-			   var aa ="<form method='POST' action='GoHtml' id='"+idx+"'>";
 			   var aa2 = "<a href=# onclick='formSubmit("+idx+"); return false;'>"
-			   var input = "<input type='hidden' name='link' value='"+link+"'>"
-			   var aa3 = "</a></form><br>"
-			   mesg +=aa+aa2+title+input+aa3;
+			   var aa3 = "</a><br>"
+				var input = "<input type='hidden' id='"+idx+"' name='link' value='"+link+"'>"
+			   mesg +=aa2+title+aa3+input+"<br>";
 			   
 									
 
@@ -51,7 +47,28 @@ font-size:20px;
  
  function formSubmit(aa){
 	 
-	 document.getElementById(aa).submit();
+	 var x = document.getElementById(aa);
+	 var xx = x.value;
+	 $.ajax({
+		type:"get",
+		url:"ajax/readhtmlajax.jsp",
+		data:{
+			v1:xx
+		},
+		dataType : "text",
+		success: function(responsData,status,xhr){
+			var xx = $.parseHTML(responsData.trim());
+	 		var myhtmltitle = $(xx).find(".subject").text();
+	 		var myhtmlcontent = $(xx).find("#article_body").text();
+	 		var realhtml = myhtmltitle+"<br><br><br>"+myhtmlcontent;
+			$("#result").replaceWith(realhtml);
+			
+		}
+		 
+		 
+		 
+		 
+	 })
 	 
  }
 	
