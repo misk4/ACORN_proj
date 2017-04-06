@@ -32,7 +32,13 @@ public class CourseSchedule extends HttpServlet {
 		
 		List<CourseDTO> list = null;
 		try {
-			list = service.teacherCourseList(user.getId());
+			if(user.getClassification().equals("관리자")){
+				list = service.getCourseList();
+				
+			}else{
+				list = service.teacherCourseList(user.getId());
+				
+			}
 			
 			request.setAttribute("courseList", list);
 			target = "teacherCourseList.jsp";
