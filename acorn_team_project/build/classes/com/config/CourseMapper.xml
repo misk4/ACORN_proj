@@ -86,7 +86,10 @@ having count(register.course_id) &gt;= avg(course.max_student)
  
  <!-- 강의 id 로 강의 가져오기 -->
  <select id = "getCourseById" parameterType = "int" resultType = "CourseDTO">
- select * from course where id = #{id}
+ select course.id, course.name,teacher.name as "teacher_name", start_time,end_time,start_day,end_day,days,manager_id
+,max_student,total_days,teacher.phone_num "teacher_phone",teacher.email "teacher_email",manager.phone_num "manager_phone",manager.email "manager_email"
+from course,teacher,manager
+where course.id = #{id} and course.teacher_id = teacher.id and course.manager_id = manager.id
  </select>
  
  <select id = "myCourse" parameterType = "string" resultType = "int">
@@ -112,5 +115,17 @@ where course.teacher_id = #{id} and course.teacher_id = teacher.id and course.ma
  <insert id = "scheduleInsert" parameterType="ScheduleDTO">
  insert into schedule values(schedule_seq.nextval,#{course_id},#{course_date},#{content},#{filepath})
  </insert>
+ 
+  <delete id = "deleteSchedule">
+ delete from schedule 
+ where id in 
+ <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+ #{id}
+ </foreach>
+ </delete>
+ 
+ <select id = "getScheduleByCourse" parameterType = "int" resultType ="ScheduleDTO">
+ select * from schedule where course_id = #{course_id}
+ </select>
  
 </mapper>

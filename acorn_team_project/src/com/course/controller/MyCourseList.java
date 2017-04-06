@@ -36,9 +36,7 @@ public class MyCourseList extends HttpServlet {
 		List<CourseDTO> list = null;
 		try {
 			list = service.myCourseList(user.getId());
-			for (CourseDTO courseDTO : list) {
-				System.out.println(courseDTO.getTeacher_email());
-			}
+			
 			request.setAttribute("courseList", list);
 			target = "myCourseList.jsp";
 		} catch (CommonException e) {
