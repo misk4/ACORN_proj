@@ -58,7 +58,8 @@ color:red;
 		s = checkTime(s);
 		document.getElementById('clock').innerHTML = year + "." + month + "." + day + "." + week[today.getDay()] + "요일" +
 			"  " + h + ":" + m + ":" + s;
-		var t = setTimeout(startTime, 500);
+		var t =
+			setTimeout(startTime, 500);
 	}
 	function checkTime(i) {
 		if (i < 10) {
@@ -91,7 +92,9 @@ if(memberservice.watingjoinlist().size()!=0){
 						<li class="active"><a href="BoardList?cate=공지사항">공지사항</a></li>
 					</c:if>
 					<li><a href="BoardList?cate=free">자유게시판</a></li>
-					<li><a href="#section3">일정보기</a></li>
+					<c:if test="${(userid!=null) && (userid.classification=='관리자' || userid.classification=='선생님')}">
+					<li><a href="CourseSchedule.java">강의관리</a></li>
+					</c:if>
 					<c:if test="${userid!=null && userid.classification=='학생'}">
 						<li><a href="MemberInfo">내정보</a></li>
 					</c:if>

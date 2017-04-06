@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+//안쓰는 서블릿
 @WebServlet("/GoHtml")
 public class GoHtml extends HttpServlet {
 	

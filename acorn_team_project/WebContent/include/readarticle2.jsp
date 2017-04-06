@@ -9,6 +9,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 .article{
 font-size:20px;
+line-height:200%
 }
 
 
@@ -45,9 +46,9 @@ font-size:20px;
 });
 		 
  
- function formSubmit(aa){
+ function formSubmit(idx){
 	 
-	 var x = document.getElementById(aa);
+	 var x = document.getElementById(idx);
 	 var xx = x.value;
 	 $.ajax({
 		type:"get",
@@ -57,12 +58,15 @@ font-size:20px;
 		},
 		dataType : "text",
 		success: function(responsData,status,xhr){
+			
 			var xx = $.parseHTML(responsData.trim());
 	 		var myhtmltitle = $(xx).find(".subject").text();
+	 		var info = $(xx).find(".byline").text();
 	 		var myhtmlcontent = $(xx).find("#article_body").text();
-	 		var realhtml = myhtmltitle+"<br><br><br>"+myhtmlcontent;
-			$("#result").replaceWith(realhtml);
-			
+	 		
+	 		var realhtml = myhtmltitle+"<br><br><br>"+info+"<br><br><br>"+myhtmlcontent;
+			//$("#result").replaceWith(realhtml);
+	 		$("#result").html(realhtml);
 		}
 		 
 		 
