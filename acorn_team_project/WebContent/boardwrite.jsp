@@ -10,16 +10,16 @@
 
 
 <body>
-	<form action="BoardWrite" method="post" enctype="multipart/form-data">
-	<table width="700" border="3" bordercolor="lightgray" align="center">
+   <form action="BoardWrite" method="post" enctype="multipart/form-data">
+   <table width="700" border="3" bordercolor="lightgray" align="center">
         <tr>
             <td>분  류</td>
             <td colspan="3"><select name="category">
-			<option value="공지사항">공지사항</option>
-			<option value="잡담">잡담</option>
-			<option value="정보">정보</option>
-		</select>
-		</td>
+         <option value="공지사항">공지사항</option>
+         <option value="잡담">잡담</option>
+         <option value="정보">정보</option>
+      </select>
+      </td>
             <td>제목</td>
             <td colspan="5">
             <input name="title" type="text" size="30" maxlength="50" value=""/>
@@ -53,11 +53,11 @@
             <td colspan="7">
                 <input type="reset" value="작성취소" >
                 <input type="submit" value="등록" >
-                <input type="button" value="목록" >            
+                <input type="button" value="목록" onclick= "location.href='BoardList?curpage=${curpage}'">            
             </td>
         </tr>
     </table>    
-		</form>
-	<!-- </form> -->
+      </form>
+   <!-- </form> -->
 </body>
 </html>
