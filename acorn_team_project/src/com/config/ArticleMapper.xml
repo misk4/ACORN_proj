@@ -11,7 +11,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
  </select>
  
+ <select id="getarticlecommentlist" resultType="ArticleCommentDTO" parameterType="hashmap">
+ 
+ select * from articlecomment where commentid = #{link}
+ 
+ </select>
+ <!-- 댓글 인덴트 추가해줘야함 -->
+ <insert id="writecomment" parameterType="hashmap">
+ insert into articlecomment values(#{link},#{userid},#{content},1,1,1) 
  
  
+ </insert>
  
 </mapper>

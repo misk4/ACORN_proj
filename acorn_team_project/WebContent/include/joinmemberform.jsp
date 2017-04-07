@@ -73,9 +73,9 @@ $("#ck").on("click",function(){
                     </small></div>
                 <div class="col-md-6">
                     <p class="text-right">
-                        <a href="http://www.naver.com" target="_blank"><img src="/resources/image/icon/naverIcon.png" alt="네이버 블로그" width="20" height="20" class="img-rounded"></a>
-                        <a href="http://www.facebook.com" target="_blank"><img src="/resources/image/icon/facebookIcon.png" alt="네이버 블로그" width="20" height="20" class="img-rounded"></a>
-                        <a href="http://www.twitter.com" target="_blank"><img src="/resources/image/icon/twitterIcon.png" alt="네이버 블로그" width="21" height="21" class="img-rounded"></a>
+                        <a href="http://www.naver.com" target="_blank"><img src="/images/icon/naverIcon.png" alt="네이버 블로그" width="20" height="20" class="img-rounded"></a>
+                        <a href="http://www.facebook.com" target="_blank"><img src="/images/icon/facebookIcon.png" alt="네이버 블로그" width="20" height="20" class="img-rounded"></a>
+                        <a href="http://www.twitter.com" target="_blank"><img src="/images/icon/twitterIcon.png" alt="네이버 블로그" width="21" height="21" class="img-rounded"></a>
                     </p>
                 </div>
             </div>
@@ -160,7 +160,7 @@ $("#ck").on("click",function(){
             </div>
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10" id="signbutton">
-				<h1 id="kkk">아이디 중복확인을 해주세요 그거해야 가입가능</h1>
+				<h1 id="kkk">아이디 중복확인을 해주세요!!!!</h1>
                 </div>
             </div>
         </form>
@@ -180,12 +180,12 @@ $("#ck").on("click",function(){
                     }
                 });
                  
-                $(".onlyHangul").keyup(function(event){
+                /* $(".onlyHangul").keyup(function(event){
                     if (!(event.keyCode >=37 && event.keyCode<=40)) {
                         var inputVal = $(this).val();
                         $(this).val(inputVal.replace(/[a-z0-9]/gi,''));
                     }
-                });
+                }); */
              
                 $(".onlyNumber").keyup(function(event){
                     if (!(event.keyCode >=37 && event.keyCode<=40)) {

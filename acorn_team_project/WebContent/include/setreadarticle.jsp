@@ -12,7 +12,7 @@
   <label><input type="radio" name="category" value="스포츠">스포츠</label>
 </div>
 <div class="radio">
-  <label><input type="radio" name="category" value="과학IT">과학IT</label>
+  <label><input type="radio" name="category" value="IT">과학IT</label>
 </div>
 <div class="radio">
   <label><input type="radio" name="category" value="경제">경제</label>

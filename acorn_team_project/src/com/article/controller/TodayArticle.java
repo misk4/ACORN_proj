@@ -26,9 +26,14 @@ public class TodayArticle extends HttpServlet {
 	
 		
 		HttpSession session = request.getSession();
+		
 		HashMap<String, String> map = new HashMap<>();
 		MemberDTO dto = (MemberDTO)session.getAttribute("userid");
 		String articlecatergory = dto.getArticlecategory();
+		if(request.getParameter("category")!=null){
+			articlecatergory=request.getParameter("category");
+			session.removeAttribute("rss");
+		}
 		String newscompany = request.getParameter("newscompany");
 		
 		if(newscompany == null){

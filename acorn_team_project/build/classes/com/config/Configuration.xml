@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
      <typeAlias type="com.entity.ScheduleDTO" alias="ScheduleDTO"/>
     <typeAlias type="com.entity.StudentattendancelistDTO" alias="StudentattendancelistDTO"/>
     <typeAlias type="com.entity.NewsArticleDTO" alias="NewsArticleDTO"/>	
+    <typeAlias type="com.entity.ArticleCommentDTO" alias="ArticleCommentDTO"/>
     </typeAliases>
     
 	<environments default="development">

@@ -34,6 +34,7 @@ public class MyInfoModify extends HttpServlet {
 		String id = dto.getId();
 		map.put("id", id);
 		service.updatemember(map);
+		response.sendRedirect("MemberInfo");
 		
 		
 		
