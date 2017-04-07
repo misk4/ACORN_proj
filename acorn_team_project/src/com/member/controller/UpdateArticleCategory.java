@@ -33,6 +33,7 @@ public class UpdateArticleCategory extends HttpServlet {
 			int k = service.updatearticlecategory(map);
 			if(k!=0){
 				session.setAttribute("modifyarticle", 1);
+				request.setAttribute("category", articlecategory);
 				RequestDispatcher dis = request.getRequestDispatcher("TodayArticle");
 				dis.forward(request, response);
 			}

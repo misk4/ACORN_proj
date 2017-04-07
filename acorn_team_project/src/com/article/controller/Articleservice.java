@@ -14,6 +14,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.DAO.MySqlsessionFactory;
+import com.entity.ArticleCommentDTO;
 import com.entity.NewsArticleDTO;
 
 public class Articleservice {
@@ -76,5 +77,39 @@ public class Articleservice {
 		return sb.toString();
 	}
 	
-	
+	public List<ArticleCommentDTO> getarticlecommentlist(HashMap<String, String> map){
+		SqlSession session = MySqlsessionFactory.openSession();
+		List<ArticleCommentDTO> list = null;
+		try{
+			list = session.selectList("getarticlecommentlist", map);
+			System.out.println("댓글사이즈"+list.size());
+			
+		}finally{
+			
+			session.close();
+		}
+		
+		return list;
+		
+	}
+	//댓글등록
+	public void writecomment(HashMap<String, String> map){
+		SqlSession session = MySqlsessionFactory.openSession();
+		
+		try {
+			session.insert("writecomment", map);
+			session.commit();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		}
+		
+		finally {
+			session.close();
+		}
+		
+		
+		
+	}
 }

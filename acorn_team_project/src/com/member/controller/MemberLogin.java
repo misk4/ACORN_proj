@@ -63,7 +63,7 @@ public class MemberLogin extends HttpServlet {
          
       };
       }else{
-         response.sendRedirect("faillogin.jsp");
+         response.sendRedirect("loginfail.jsp");
          return;
       }
       

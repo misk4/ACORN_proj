@@ -93,7 +93,7 @@ if(memberservice.watingjoinlist().size()!=0){
 					</c:if>
 					<li><a href="BoardList?cate=free">자유게시판</a></li>
 					<c:if test="${(userid!=null) && (userid.classification=='관리자' || userid.classification=='선생님')}">
-					<li><a href="CourseSchedule.java">강의관리</a></li>
+					<li><a href="CourseSchedule">강의관리</a></li>
 					</c:if>
 					<c:if test="${userid!=null && userid.classification=='학생'}">
 						<li><a href="MemberInfo">내정보</a></li>
@@ -108,8 +108,8 @@ if(memberservice.watingjoinlist().size()!=0){
 					</c:if>
 					<c:if test="${userid!=null}">
 						<li><a href="CourseList">강의목록</a></li>
-						<li><a href="setreadarticle.jsp">관심뉴스설정</a></li>
 						<li><a href="TodayArticle">오늘의뉴스</a></li>
+						<li><a href="setreadarticle.jsp">다른뉴스보기</a></li>
 					</c:if>
 					
 				</ul>
